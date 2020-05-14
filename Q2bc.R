@@ -4,6 +4,7 @@ library(devtools)
 library(UserNetR)
 data(Bali)
 library(ggnetwork)
+library("ggplot2")
 class(Bali)#Net is a special class 
 ggnetplot <- function(Net=Bali){
   
