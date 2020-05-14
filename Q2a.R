@@ -1,4 +1,8 @@
 library("WDI")
+library("ggplot2")
+#install.packages("countrycode")
+library("countrycode")
+library("tidyverse")
 
 wdi_data <- WDI(indicator = c("NY.GDP.PCAP.PP.KD","EN.ATM.CO2E.PC"),start = 2010,end = 2010,extra = TRUE)
 wdi_data1 <- tibble(wdi_data)
@@ -8,8 +12,7 @@ wdi_data1 <- wdi_data1%>% rename(GDPpercap= NY.GDP.PCAP.PP.KD, Emit_co2Pcap=EN.A
 dat_map <- map_data("world")
 
 
-#install.packages("countrycode")
-library(countrycode)
+
 dat_map$ccode <- countrycode(dat_map$region, origin = "country.name", destination = "wb")
 wdi_data1$ccode <- countrycode(wdi_data1$country, origin = "country.name", destination = "wb")
 
